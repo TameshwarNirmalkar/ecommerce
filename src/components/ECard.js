@@ -1,6 +1,12 @@
 import React from "react";
 import { Card, Input, Button, Space } from "antd";
-import { DeleteFilled, ShoppingCartOutlined } from "@ant-design/icons";
+import {
+  DeleteFilled,
+  DownloadOutlined,
+  MinusCircleFilled,
+  PlusCircleFilled,
+  ShoppingCartOutlined,
+} from "@ant-design/icons";
 const { Meta } = Card;
 const ECard = ({
   id,
@@ -27,27 +33,30 @@ const ECard = ({
                 onClick={() =>
                   addToCart({ id, title, image, price, quantity: 1 })
                 }
-                key="add to cart"
+                key="add_to_cart"
+                style={{ color: "#2e8b01" }}
               />,
             ]
           : [
-              <Space>
+              <Space key="add_quantity">
                 <Input
                   addonBefore={
                     <Button
+                      size={"small"}
                       onClick={() =>
                         updateQuantity({
                           ...selectedProd,
                           quantity: selectedProd.quantity + 1,
                         })
                       }
-                      type="link"
-                    >
-                      +
-                    </Button>
+                      type="text"
+                      icon={<PlusCircleFilled />}
+                      style={{ color: "#2e8b01" }}
+                    />
                   }
                   addonAfter={
                     <Button
+                      size={"small"}
                       disabled={selectedProd?.quantity === 1}
                       onClick={() =>
                         updateQuantity({
@@ -55,15 +64,18 @@ const ECard = ({
                           quantity: selectedProd.quantity - 1,
                         })
                       }
-                      type="link"
-                    >
-                      -
-                    </Button>
+                      type="text"
+                      icon={<MinusCircleFilled />}
+                      style={{ color: "#2e8b01" }}
+                    />
                   }
                   defaultValue={selectedProd?.quantity}
                   value={selectedProd?.quantity}
                 />
-                <DeleteFilled onClick={() => removeFromCart(id)} />
+                <DeleteFilled
+                  onClick={() => removeFromCart(id)}
+                  style={{ color: "#cc0000" }}
+                />
               </Space>,
             ]
       }
