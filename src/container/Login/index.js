@@ -7,6 +7,7 @@ import { fetchUser } from "../../store/slices/userSlice";
 const Login = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const { status, error } = useSelector((state) => ({
     ...state.user,
   }));
@@ -19,7 +20,8 @@ const Login = (props) => {
 
   const onFinish = async (values) => {
     let res = await dispatch(fetchUser(values));
-    if (res.payload) {
+    console.log("REs: ", res);
+    if (res.payload !== "USER_PASS_NOT_MATCHING") {
       navigate("/products");
     }
   };
@@ -51,14 +53,19 @@ const Login = (props) => {
           <Input.Password />
         </Form.Item>
 
+        {error && (
+          <Form.Item label=" " colon={false}>
+            <div className="alert alert-danger" role="alert">
+              {error}
+            </div>
+          </Form.Item>
+        )}
+
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
         </Form.Item>
-        {error && (
-          <Form.Item label="" validateStatus="error" help={error}></Form.Item>
-        )}
       </Form>
     </>
   );

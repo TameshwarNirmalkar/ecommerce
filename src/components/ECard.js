@@ -34,7 +34,6 @@ const ECard = ({
                   addToCart({ id, title, image, price, quantity: 1 })
                 }
                 key="add_to_cart"
-                style={{ color: "#2e8b01" }}
               />,
             ]
           : [
@@ -51,7 +50,7 @@ const ECard = ({
                       }
                       type="text"
                       icon={<PlusCircleFilled />}
-                      style={{ color: "#2e8b01" }}
+                      style={{ color: "#7e7e7ed9" }}
                     />
                   }
                   addonAfter={
@@ -66,21 +65,18 @@ const ECard = ({
                       }
                       type="text"
                       icon={<MinusCircleFilled />}
-                      style={{ color: "#2e8b01" }}
+                      style={{ color: "#7e7e7ed9" }}
                     />
                   }
                   defaultValue={selectedProd?.quantity}
                   value={selectedProd?.quantity}
                 />
-                <DeleteFilled
-                  onClick={() => removeFromCart(id)}
-                  style={{ color: "#cc0000" }}
-                />
+                <DeleteFilled onClick={() => removeFromCart(id)} />
               </Space>,
             ]
       }
     >
-      <Meta title={`${title}`} description={`Price:${price}`} />
+      <Meta title={`${title}`} description={`Price: ${price}`} />
     </Card>
   );
 };

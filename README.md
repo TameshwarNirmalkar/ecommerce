@@ -16,8 +16,9 @@ Go to the checkout folder
 
 ```javascript
 # run command 'npm start' in terminal
-# username and password is 'tamesh@gmail.com'/'Test123'
-it is mentioned in under `api/user.json`.
+# username: 'tamesh@gmail.com'
+# password: 'Test123'
+it is mentioned under the `api/user.json`.
 
 ```
 
