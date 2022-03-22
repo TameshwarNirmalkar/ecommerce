@@ -5,8 +5,6 @@ import {
   Route,
   Navigate,
   Link,
-  useNavigate,
-  useHref,
 } from "react-router-dom";
 import { Layout, Menu, Tag } from "antd";
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";

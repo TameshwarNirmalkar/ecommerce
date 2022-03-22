@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Col, Row, Breadcrumb, Spin, Space, Divider } from "antd";
+import { Col, Row, Breadcrumb, Spin, Divider } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts, updateProducts } from "../../store/slices/productSlice";
 import ECard from "../../components/ECard";
@@ -15,7 +15,7 @@ const Products = () => {
     if (status === "IDEAL") {
       dispatch(fetchProducts());
     }
-  }, [status]);
+  }, [status, dispatch]);
 
   const addToCart = (prod) => {
     const updateProd = { ...selectedProducts };

@@ -15,7 +15,7 @@ const Login = (props) => {
     if (status === "SUCCESS") {
       navigate(-1);
     }
-  }, [status]);
+  }, [status, navigate]);
 
   const onFinish = async (values) => {
     let res = await dispatch(fetchUser(values));

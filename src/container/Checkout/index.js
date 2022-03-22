@@ -22,7 +22,7 @@ const Checkout = () => {
     if (!user) {
       navigate("/");
     }
-  }, [user]);
+  }, [user, navigate]);
 
   const getProductQuantity = () => {
     let quantity = 0;
@@ -35,7 +35,9 @@ const Checkout = () => {
   const getDiscountedPrice = () => {
     let totalPrice = 0;
     Object.keys(selectedProducts).forEach((key) => {
-      totalPrice = totalPrice + selectedProducts[key].price * selectedProducts[key].quantity;
+      totalPrice =
+        totalPrice +
+        selectedProducts[key].price * selectedProducts[key].quantity;
     });
     if (totalPrice !== 0) {
       totalPrice = totalPrice - totalPrice * 0.15;
@@ -45,7 +47,20 @@ const Checkout = () => {
   };
 
   const getDiliverDate = () => {
-    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
     const dateObj = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
     const month = monthNames[dateObj.getMonth()];
     const day = String(dateObj.getDate()).padStart(2, "0");
@@ -80,14 +95,21 @@ const Checkout = () => {
           <Col span={8}>
             <Card
               actions={[
-                <Button onClick={confirmOrderHandler} disabled={!user} type="link" block>
+                <Button
+                  onClick={confirmOrderHandler}
+                  disabled={!user}
+                  type="link"
+                  block
+                >
                   {user && " Confirm Order"}
                 </Button>,
               ]}
               title="Cart summary"
               style={{ width: 300 }}
             >
-              <p>Total products: {` ${Object.keys(selectedProducts).length}`}</p>
+              <p>
+                Total products: {` ${Object.keys(selectedProducts).length}`}
+              </p>
               <p>Total quantity: {getProductQuantity()}</p>
               <p>15% Discounted price: {getDiscountedPrice()}</p>
               <p>Deliver Date: {getDiliverDate()}</p>
